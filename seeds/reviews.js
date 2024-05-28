@@ -23,6 +23,27 @@ const main = async () => {
             text: "It was okay, I guess.",
             rating: 6,
         },
+        {
+            title: "Disappointing",
+            movie: movies.find(m => m.name === "Wonder Woman")._id,
+            reviewer: "Bob Johnson",
+            text: "I had high expectations for this movie, but it fell short. The plot was weak and the characters were uninteresting.",
+            rating: 4,
+        },
+        {
+            title: "Incredible!",
+            movie: movies.find(m => m.name === "The Shawshank Redemption")._id,
+            reviewer: "Sarah Johnson",
+            text: "This movie is an absolute masterpiece. The storytelling and performances are outstanding.",
+            rating: 10,
+        },
+        {
+            title: "A Must-Watch",
+            movie: movies.find(m => m.name === "The Hunger Games")._id,
+            reviewer: "Michael Thompson",
+            text: "This movie is a thrilling ride from start to finish. I couldn't look away!",
+            rating: 9,
+        }
     ]
 
     const newReviews = await Review.insertMany(reviews)
