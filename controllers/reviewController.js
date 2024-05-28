@@ -1,4 +1,5 @@
 const Review = require('../models/review')
+const Movie = require('../models/movie')
 
 const getReviews = async (req, res) => {
     try {
@@ -39,6 +40,11 @@ const createReview = async (req, res) => {
     try {
         const review = await new Review(req.body)
         await review.save()
+
+        const movie = await Movie.findById(review.movie)
+        movie.reviews.push(review._id)
+        await movie.save()
+
         return res.status(201).json({ review })
     } catch (error) {
         return res.status(500).send(error.message)
