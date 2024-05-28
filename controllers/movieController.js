@@ -35,8 +35,19 @@ const getMoviesByActor = async (req, res) => {
     }
 }
 
+const createMovie = async (req, res) => {
+    try {
+        const movie = await new Movie(req.body)
+        await movie.save()
+        return res.status(201).json({ movie })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = {
     getMovies,
     getMovieById,
     getMoviesByActor,
+    createMovie,
 }

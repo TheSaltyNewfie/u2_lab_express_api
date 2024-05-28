@@ -21,12 +21,15 @@ app.get('/', (req, res) => {
 
 app.get('/actors', actorController.getActors)
 app.get('/actors/:id', actorController.getActorById)
+app.post('/actors', actorController.createActor)
 app.get('/movies', movieController.getMovies)
 app.get('/movies/:id', movieController.getMovieById)
 app.get('/movies/actor/:actorId', movieController.getMoviesByActor)
+app.post('/movies', movieController.createMovie)
 app.get('/reviews', reviewController.getReviews)
 app.get('/reviews/:id', reviewController.getReviewById)
 app.get('/reviews/movie/:movieId', reviewController.getReviewByMovieId)
+app.post('/reviews', reviewController.createReview)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)

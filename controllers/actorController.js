@@ -22,7 +22,18 @@ const getActorById = async (req, res) => {
     }
 }
 
+const createActor = async (req, res) => {
+    try {
+        const actor = await new Actor(req.body)
+        await actor.save()
+        return res.status(201).json({ actor })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = {
     getActors,
     getActorById,
+    createActor,
 }
